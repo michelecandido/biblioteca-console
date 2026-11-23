@@ -21,4 +21,26 @@ public class Livro {
     public String getAutor() { return autor; }
     public int getAno() { return ano; }
     public boolean isDisponivel() { return disponivel; }
+
+    public boolean emprestar() {
+        if(disponivel) {
+            disponivel = false;
+            return true;
+        }
+        return false;
+    }
+
+    public boolean devolver() {
+        if(!disponivel) {
+            disponivel = true;
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        String status = disponivel ? "Disponível" : "Emprestado";
+        return String.format("[%d] %s - %s (%d) - %s", id, titulo, autor, ano, status);
+    }
 }
