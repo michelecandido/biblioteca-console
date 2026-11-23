@@ -21,4 +21,20 @@ public class Livro {
     public String getAutor() { return autor; }
     public int getAno() { return ano; }
     public boolean isDisponivel() { return disponivel; }
+
+    public boolean emprestar() {
+        if(disponivel) {
+            disponivel = false;
+            return true;
+        }
+        return false;
+    }
+
+    public boolean devolver() {
+        if(!disponivel) {
+            disponivel = true;
+            return true;
+        }
+        return false;
+    }
 }
