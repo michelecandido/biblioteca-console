@@ -16,4 +16,20 @@ public class Usuario {
     public int getId() { return id; }
     public String getNome() { return nome; }
     public ArrayList<Livro> getLivrosEmprestados() { return livrosEmprestados; }
+
+    public boolean adicionarLivro(Livro livro) {
+        if(livro.isDisponivel()) {
+            livrosEmprestados.add(livro);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean removerLivro(Livro livro) {
+        if(livrosEmprestados.contains(livro)) {
+            livrosEmprestados.remove(livro);
+            return true;
+        }
+        return false;
+    }
 }
