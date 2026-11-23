@@ -32,4 +32,9 @@ public class Usuario {
         }
         return false;
     }
+
+    @Override
+    public String toString() {
+        return String.format("[%d] %s", id, nome);
+    }
 }
