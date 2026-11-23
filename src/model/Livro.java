@@ -37,4 +37,10 @@ public class Livro {
         }
         return false;
     }
+
+    @Override
+    public String toString() {
+        String status = disponivel ? "Disponível" : "Emprestado";
+        return String.format("[%d] %s - %s (%d) - %s", id, titulo, autor, ano, status);
+    }
 }
