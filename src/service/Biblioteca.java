@@ -1,0 +1,23 @@
+package service;
+
+import model.Livro;
+import model.Usuario;
+
+import java.util.ArrayList;
+
+public class Biblioteca {
+    private ArrayList<Livro> livros = new ArrayList<>();
+    private ArrayList<Usuario> usuarios = new ArrayList<>();
+
+    public Livro cadastrarLivro(String titulo, String autor, int ano) {
+        Livro livro = new Livro(titulo, autor, ano);
+        livros.add(livro);
+        return livro;
+    }
+
+    public Usuario cadastrarUsuario(String nome) {
+        Usuario user = new Usuario(nome);
+        usuarios.add(user);
+        return user;
+    }
+}
