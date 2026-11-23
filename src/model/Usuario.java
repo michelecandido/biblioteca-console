@@ -18,7 +18,7 @@ public class Usuario {
     public ArrayList<Livro> getLivrosEmprestados() { return livrosEmprestados; }
 
     public boolean adicionarLivro(Livro livro) {
-        if(livro.isDisponivel()) {
+        if(!livrosEmprestados.contains(livro)) {
             livrosEmprestados.add(livro);
             return true;
         }
