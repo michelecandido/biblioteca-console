@@ -25,4 +25,15 @@ public class Biblioteca {
     public List<Livro> listarLivros() {
         return List.copyOf(livros);
     }
+
+    public List<Livro> buscarPorTitulo(String trecho) {
+        List<Livro> livrosEncontrados = new ArrayList<>();
+
+        for(Livro livro : livros) {
+            if(livro.getTitulo().toLowerCase().contains(trecho.toLowerCase())) {
+                livrosEncontrados.add(livro);
+            }
+        }
+        return livrosEncontrados;
+    }
 }
