@@ -4,6 +4,7 @@ import model.Livro;
 import model.Usuario;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Biblioteca {
     private ArrayList<Livro> livros = new ArrayList<>();
@@ -19,5 +20,9 @@ public class Biblioteca {
         Usuario user = new Usuario(nome);
         usuarios.add(user);
         return user;
+    }
+
+    public List<Livro> listarLivros() {
+        return List.copyOf(livros);
     }
 }
