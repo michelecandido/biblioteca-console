@@ -71,4 +71,16 @@ public class Biblioteca {
         livro.emprestar();
         usuario.adicionarLivro(livro);
     }
+
+    public void devolver(int idLivro, int idUsuario) {
+        Livro livro = buscarLivroId(idLivro);
+        Usuario usuario = buscarUsuarioId(idUsuario);
+
+        if(!usuario.getLivrosEmprestados().contains(livro)) {
+            throw new IllegalStateException("Usuário não possui o livro.");
+        }
+
+        livro.devolver();
+        usuario.removerLivro(livro);
+    }
 }
