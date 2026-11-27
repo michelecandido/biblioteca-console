@@ -9,6 +9,7 @@ import java.util.List;
 public class Biblioteca {
     private ArrayList<Livro> livros = new ArrayList<>();
     private ArrayList<Usuario> usuarios = new ArrayList<>();
+    private static final int LIMITE_EMPRESTIMOS = 3;
 
     public Livro cadastrarLivro(String titulo, String autor, int ano) {
         Livro livro = new Livro(titulo, autor, ano);
@@ -35,5 +36,39 @@ public class Biblioteca {
             }
         }
         return livrosEncontrados;
+    }
+
+    private Livro buscarLivroId(int id) {
+        for(Livro livro : livros) {
+            if(livro.getId() == id) {
+                return livro;
+            }
+        }
+        throw new IllegalArgumentException("Livro não encontrado: id " + id);
+    }
+
+    private Usuario buscarUsuarioId(int id) {
+        for(Usuario usuario : usuarios) {
+            if(usuario.getId() == id) {
+                return usuario;
+            }
+        }
+        throw new IllegalArgumentException("Usuário não encontrado: id " + id);
+    }
+
+    public void emprestar(int idLivro, int idUsuario) {
+        Livro livro = buscarLivroId(idLivro);
+        Usuario usuario = buscarUsuarioId(idUsuario);
+
+        if(!livro.isDisponivel()) {
+            throw new IllegalStateException("Livro não disponível: id " + idLivro);
+        }
+
+        if(usuario.getLivrosEmprestados().size() >= LIMITE_EMPRESTIMOS) {
+            throw new IllegalStateException("Limite de empréstimos atingido.");
+        }
+
+        livro.emprestar();
+        usuario.adicionarLivro(livro);
     }
 }
